@@ -155,107 +155,107 @@ class MobileTypography extends Typography {
 
   final KThemeModeApp theme;
 
-  String get displayLargeFamily => 'Outfit';
+  String get displayLargeFamily => 'Roboto';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Outfit';
+  String get displayMediumFamily => 'Roboto';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Outfit';
+  String get displaySmallFamily => 'Roboto';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
-  String get headlineLargeFamily => 'Outfit';
+  String get headlineLargeFamily => 'Roboto';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Outfit';
+  String get headlineMediumFamily => 'Roboto';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
-  String get headlineSmallFamily => 'Outfit';
+  String get headlineSmallFamily => 'Roboto';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
-  String get titleLargeFamily => 'Outfit';
+  String get titleLargeFamily => 'Roboto';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Outfit';
+  String get titleMediumFamily => 'Roboto';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Outfit';
+  String get titleSmallFamily => 'Roboto';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Outfit';
+  String get labelLargeFamily => 'Roboto';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Outfit';
+  String get labelMediumFamily => 'Roboto';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Outfit';
+  String get labelSmallFamily => 'Roboto';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => 'Outfit';
+  String get bodyLargeFamily => 'Roboto';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Outfit';
+  String get bodyMediumFamily => 'Roboto';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Outfit';
+  String get bodySmallFamily => 'Roboto';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
@@ -267,107 +267,107 @@ class TabletTypography extends Typography {
 
   final KThemeModeApp theme;
 
-  String get displayLargeFamily => 'Outfit';
+  String get displayLargeFamily => 'Roboto';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Outfit';
+  String get displayMediumFamily => 'Roboto';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Outfit';
+  String get displaySmallFamily => 'Roboto';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineLargeFamily => 'Outfit';
+  String get headlineLargeFamily => 'Roboto';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Outfit';
+  String get headlineMediumFamily => 'Roboto';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
-  String get headlineSmallFamily => 'Outfit';
+  String get headlineSmallFamily => 'Roboto';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
-  String get titleLargeFamily => 'Outfit';
+  String get titleLargeFamily => 'Roboto';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Outfit';
+  String get titleMediumFamily => 'Roboto';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Outfit';
+  String get titleSmallFamily => 'Roboto';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Outfit';
+  String get labelLargeFamily => 'Roboto';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Outfit';
+  String get labelMediumFamily => 'Roboto';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Outfit';
+  String get labelSmallFamily => 'Roboto';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => 'Outfit';
+  String get bodyLargeFamily => 'Roboto';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Outfit';
+  String get bodyMediumFamily => 'Roboto';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Outfit';
+  String get bodySmallFamily => 'Roboto';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
@@ -379,107 +379,107 @@ class DesktopTypography extends Typography {
 
   final KThemeModeApp theme;
 
-  String get displayLargeFamily => 'Outfit';
+  String get displayLargeFamily => 'Roboto';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Outfit';
+  String get displayMediumFamily => 'Roboto';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Outfit';
+  String get displaySmallFamily => 'Roboto';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Outfit';
+  String get headlineLargeFamily => 'Roboto';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Outfit';
+  String get headlineMediumFamily => 'Roboto';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Outfit';
+  String get headlineSmallFamily => 'Roboto';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
-  String get titleLargeFamily => 'Outfit';
+  String get titleLargeFamily => 'Roboto';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Outfit';
+  String get titleMediumFamily => 'Roboto';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Outfit';
+  String get titleSmallFamily => 'Roboto';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Outfit';
+  String get labelLargeFamily => 'Roboto';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Outfit';
+  String get labelMediumFamily => 'Roboto';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Outfit';
+  String get labelSmallFamily => 'Roboto';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => 'Outfit';
+  String get bodyLargeFamily => 'Roboto';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Outfit';
+  String get bodyMediumFamily => 'Roboto';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Outfit';
+  String get bodySmallFamily => 'Roboto';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Outfit',
+        'Roboto',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,

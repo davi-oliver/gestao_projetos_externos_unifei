@@ -11,10 +11,39 @@ abstract class _HomeStoreBase with Store {
   ObservableList lista = ObservableList();
 
   @action
-  void addController(TextEditingController controller) {
-    for (var i = 0; i < 10; i++) {
+  void addController() {
+    lista.clear();
+    listaControladores.clear();
+    for (var i = 0; i < json.length; i++) {
       final controller = TextEditingController();
       listaControladores.add(controller);
+      lista.add(json[i]);
+      print("adiconou lista ${lista[i]}");
+      print("listaControladores ${listaControladores[i].text is Null}");
     }
   }
 }
+
+final json = [
+  {
+    "campo": "Contato Telefone do Responsável",
+    "tipo": "text",
+    "icone": Icons.smartphone_outlined
+  },
+  {
+    "campo": "Email do responsável",
+    "tipo": "text",
+    "icone": Icons.email_outlined
+  },
+  {"campo": "Descrição", "tipo": "text", "icone": Icons.description_outlined},
+  {
+    "campo": "Professor Responsável",
+    "tipo": "text",
+    "icone": Icons.person_outline
+  },
+  {
+    "campo": "Anexe uma Imgem do Projeto",
+    "tipo": "text",
+    "icone": Icons.image_outlined
+  }
+];

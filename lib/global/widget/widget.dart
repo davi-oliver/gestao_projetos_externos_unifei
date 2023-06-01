@@ -6,11 +6,12 @@ class GlobalWidget {
   BuildContext context;
   GlobalWidget(this.context);
 
-  Widget AppbarCustom(title, icon, [bool isBack = false]) {
+  Widget AppbarCustom(title, icon,
+      [bool isBack = false, bool contracolor = false]) {
     return Container(
       height: MediaQuery.of(context).size.height * .1,
       width: MediaQuery.of(context).size.width,
-      color: KThemeModeApp.of(context).primaryBackground,
+      color: Colors.transparent,
       child: Row(children: [
         IconButton(
             onPressed: () {
@@ -18,10 +19,18 @@ class GlobalWidget {
                 Navigator.pop(context);
               }
             },
-            icon: Icon(icon)),
+            icon: Icon(
+              icon,
+              color: contracolor
+                  ? KThemeModeApp.of(context).primaryBtnText
+                  : KThemeModeApp.of(context).primaryText,
+            )),
         Text(
           title,
-          style: KThemeModeApp.of(context).bodyMedium,
+          style: KThemeModeApp.of(context).headlineMedium.copyWith(
+              color: contracolor
+                  ? KThemeModeApp.of(context).primaryBtnText
+                  : KThemeModeApp.of(context).primaryText),
         ),
       ]),
     );

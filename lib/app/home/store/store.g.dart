@@ -13,11 +13,11 @@ mixin _$HomeStore on _HomeStoreBase, Store {
       ActionController(name: '_HomeStoreBase', context: context);
 
   @override
-  void addController(TextEditingController controller) {
+  void addController() {
     final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
         name: '_HomeStoreBase.addController');
     try {
-      return super.addController(controller);
+      return super.addController();
     } finally {
       _$_HomeStoreBaseActionController.endAction(_$actionInfo);
     }
