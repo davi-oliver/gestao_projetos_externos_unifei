@@ -41,9 +41,4 @@ final json = [
     "tipo": "text",
     "icone": Icons.person_outline
   },
-  {
-    "campo": "Anexe uma Imgem do Projeto",
-    "tipo": "text",
-    "icone": Icons.image_outlined
-  }
 ];

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_mode.dart';
 
 class GlobalWidget {
@@ -77,7 +79,9 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextFormField(
         obscureText: widget.obsecureText,
-        controller: widget.controllador,
+        controller: widget.campo == "Contato Telefone do Responsável"
+            ? formatCel
+            : widget.controllador,
         onChanged: widget.onChanged,
         onTap: widget.onTap!,
         validator: widget.validator ?? null,
@@ -85,6 +89,9 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
             ? TextInputType.text
             : const TextInputType.numberWithOptions(decimal: true),
         style: widget.style ?? KThemeModeApp.of(context).headlineMedium,
+        // inputFormatters: widget.campo == "Contato Telefone do Responsável"
+        //     ? [formatCel]
+        //     : [],
         decoration: InputDecoration(
           labelText: widget.titulo,
           labelStyle: KThemeModeApp.of(context).labelLarge,
@@ -97,6 +104,32 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
           ),
         ),
       ),
+    );
+  }
+}
+
+final formatCel = MaskedTextController(mask: '(XX) XXXXX-XXXX');
+
+class TelefoneFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    var newText = newValue.text;
+
+    if (newText.length == 1) {
+      // Adiciona o "(" no início do texto
+      newText = '($newText';
+    } else if (newText.length == 3) {
+      // Adiciona o ")" após os dois primeiros dígitos
+      newText = '(${newText.substring(1)}) ';
+    } else if (newText.length == 9) {
+      // Adiciona o "-" após os primeiros cinco dígitos
+      newText = '(${newText.substring(1, 3)}) ${newText.substring(4)}-';
+    }
+
+    return TextEditingValue(
+      text: newText,
+      selection: TextSelection.collapsed(offset: newText.length),
     );
   }
 }

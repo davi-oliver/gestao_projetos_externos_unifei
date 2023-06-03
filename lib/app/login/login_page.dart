@@ -37,7 +37,10 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
               child: Stack(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 30, left: 23, bottom: 43),
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * .1,
+                        left: 23,
+                        bottom: 43),
                     child: Row(
                       children: [
                         Icon(
@@ -341,7 +344,7 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                     child: Container(
                       margin: EdgeInsets.symmetric(
                           horizontal: 0,
-                          vertical: MediaQuery.of(context).size.height * .1),
+                          vertical: MediaQuery.of(context).size.height * .15),
                       child: Image.asset(
                         "assets/images/logo.png",
                         width: MediaQuery.of(context).size.width * .35,
