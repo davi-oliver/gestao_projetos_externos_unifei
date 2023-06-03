@@ -1,4 +1,4 @@
-import 'package:components_ui/components_ui.dart';
+// import 'package:components_ui/components_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -76,51 +76,51 @@ class HomeWidgets {
                   // deve ser habilitado quando todos os inputs estiverem preenchidos
                   // deve ser desabilitado quando o usuário clicar no botão de enviar
 
-                  MultiImagePickerView(
-                    controller: controller,
-                    // draggable: /* true or false, images can be reorderd by dragging by user or not, default true */,
-                    showAddMoreButton: controller.images.isEmpty
-                        ? false
-                        : true /* true or false, default is true */,
-                    showInitialContainer:
-                        true /* true or false, default is true */,
-                    initialContainerBuilder: (context, pickerCallback) {
-                      // return custom initial widget which should call the pickerCallback when user clicks on it
-                      return KitButton(
-                        onTap: () {
-                          pickerCallback.call();
-                        },
-                        decorationButton: BoxDecoration(
-                            color: KThemeModeApp.of(context).primary),
-                        widgetCenter: Text(
-                          "Adicionar Imagem",
-                          style: KThemeModeApp.of(context).bodyMedium.copyWith(
-                              color: KThemeModeApp.of(context).primaryBtnText),
-                        ),
-                      );
-                    },
-                    itemBuilder: (context, image, removeCallback) {
-                      // return custom card for image and remove button which also calls removeCallback on click
-                      return Container();
-                    },
-                    addMoreBuilder: (context, pickerCallback) {
-                      // return custom card or item widget which should call the pickerCallback when user clicks on it
-                      return KitButton(
-                        onTap: () {},
-                        widgetCenter: Text("Adicionar Imagem"),
-                      );
-                    },
-                    addButtonTitle: "Adiconar Imagem",
-                    addMoreButtonTitle: "Adiconar Mais Imagens",
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    // onDragBoxDecoration: /* BoxDecoration when item is dragging */,
-                    onChange: (images) {
-                      // callback to update images
-                    },
-                  ),
+                  // MultiImagePickerView(
+                  //   controller: controller,
+                  //   // draggable: /* true or false, images can be reorderd by dragging by user or not, default true */,
+                  //   showAddMoreButton: controller.images.isEmpty
+                  //       ? false
+                  //       : true /* true or false, default is true */,
+                  //   showInitialContainer:
+                  //       true /* true or false, default is true */,
+                  //   initialContainerBuilder: (context, pickerCallback) {
+                  //     // return custom initial widget which should call the pickerCallback when user clicks on it
+                  //     return KitButton(
+                  //       onTap: () {
+                  //         pickerCallback.call();
+                  //       },
+                  //       decorationButton: BoxDecoration(
+                  //           color: KThemeModeApp.of(context).primary),
+                  //       widgetCenter: Text(
+                  //         "Adicionar Imagem",
+                  //         style: KThemeModeApp.of(context).bodyMedium.copyWith(
+                  //             color: KThemeModeApp.of(context).primaryBtnText),
+                  //       ),
+                  //     );
+                  //   },
+                  //   itemBuilder: (context, image, removeCallback) {
+                  //     // return custom card for image and remove button which also calls removeCallback on click
+                  //     return Container();
+                  //   },
+                  //   addMoreBuilder: (context, pickerCallback) {
+                  //     // return custom card or item widget which should call the pickerCallback when user clicks on it
+                  //     return KitButton(
+                  //       onTap: () {},
+                  //       widgetCenter: Text("Adicionar Imagem"),
+                  //     );
+                  //   },
+                  //   addButtonTitle: "Adiconar Imagem",
+                  //   addMoreButtonTitle: "Adiconar Mais Imagens",
+                  //   gridDelegate:
+                  //       const SliverGridDelegateWithFixedCrossAxisCount(
+                  //     crossAxisCount: 3,
+                  //   ),
+                  //   // onDragBoxDecoration: /* BoxDecoration when item is dragging */,
+                  //   onChange: (images) {
+                  //     // callback to update images
+                  //   },
+                  // ),
                   SizedBox(
                     height: 20,
                   ),

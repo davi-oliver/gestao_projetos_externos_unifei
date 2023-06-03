@@ -1,11 +1,12 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:components_ui/components_ui.dart';
+// import 'package:components_ui/components_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gestao_projeto_unifei/app/home/home_functions.dart';
 import 'package:gestao_projeto_unifei/app/home/home_page.dart';
+import 'package:gestao_projeto_unifei/app/login/login_functions.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_mode.dart';
 import 'package:gestao_projeto_unifei/global/widget/widget.dart';
 
@@ -19,8 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> with ValidaForm {
   bool _carregando = false;
   bool visibilityPass = true;
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController senhacontroller = TextEditingController();
+  bool click = false;
 
   final formState = GlobalKey<FormState>();
   @override
@@ -59,7 +59,6 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                   ),
                   Center(
                     child: Container(
-                      height: MediaQuery.of(context).size.height * .78,
                       width: MediaQuery.of(context).size.width * .85,
                       margin: EdgeInsets.symmetric(vertical: 120),
                       padding: EdgeInsets.only(
@@ -110,6 +109,11 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                                     icon: Icon(Icons.lock),
                                     campo: "Login",
                                     titulo: "Senha",
+                                    style: KThemeModeApp.of(context)
+                                        .bodySmall
+                                        .copyWith(
+                                            color: KThemeModeApp.of(context)
+                                                .primaryText),
                                     numero: false,
                                     icon2: IconButton(
                                       onPressed: () {
@@ -187,12 +191,53 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                KitButton(
+                                GestureDetector(
+                                  onTap: () async {
+                                    setState(() {
+                                      _carregando = true;
+                                      click = !click;
+                                    });
+                                    await Future.delayed(Duration(seconds: 2));
+                                    if (formState.currentState!.validate() &&
+                                        emailcontroller.text.isNotEmpty &&
+                                        senhacontroller.text.isNotEmpty) {
+                                      try {
+                                        await LoginFunctions(context)
+                                            .loginWithEmail()
+                                            .then((value) => {
+                                                  if (value)
+                                                    {
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      HomePage()))
+                                                    }
+                                                });
+                                      } catch (e) {
+                                        setState(() {
+                                          _carregando = false;
+                                          click = false;
+                                        });
+                                      }
+                                    } else {
+                                      setState(() {
+                                        _carregando = false;
+                                        click = false;
+                                      });
+                                    }
+                                    setState(() {
+                                      _carregando = false;
+                                      click = false;
+                                    });
+                                  },
+                                  child: Container(
                                     width:
                                         MediaQuery.of(context).size.width * .45,
                                     height: MediaQuery.of(context).size.height *
                                         .065,
-                                    decorationButton: BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: _carregando
                                           ? KThemeModeApp.of(context).accent4
                                           : KThemeModeApp.of(context).accent2,
@@ -205,62 +250,51 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                                             spreadRadius: 0.5)
                                       ],
                                     ),
-                                    widgetCenter: _carregando
-                                        ? AnimatedTextKit(
-                                            animatedTexts: [
-                                              WavyAnimatedText('Aguarde ...',
-                                                  speed: Duration(
-                                                      milliseconds: 100),
-                                                  textStyle: KThemeModeApp.of(
-                                                          context)
-                                                      .headlineMedium
-                                                      .copyWith(
-                                                          color:
-                                                              KThemeModeApp.of(
-                                                                      context)
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        _carregando
+                                            ? AnimatedTextKit(
+                                                animatedTexts: [
+                                                  WavyAnimatedText(
+                                                      'Aguarde ...',
+                                                      speed: Duration(
+                                                          milliseconds: 100),
+                                                      textStyle: KThemeModeApp
+                                                              .of(context)
+                                                          .headlineMedium
+                                                          .copyWith(
+                                                              color: KThemeModeApp
+                                                                      .of(context)
                                                                   .accent2)),
-                                            ],
-                                            isRepeatingAnimation: true,
-                                            totalRepeatCount: 3,
-                                          )
-                                        : Text(
-                                            "Entrar",
-                                            style: KThemeModeApp.of(context)
-                                                .bodyLarge
-                                                .copyWith(
-                                                    color: KThemeModeApp.of(
-                                                            context)
-                                                        .primaryBtnText),
-                                          ),
-                                    iconSufix: Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: _carregando
-                                          ? Colors.transparent
-                                          : KThemeModeApp.of(context)
-                                              .primaryBtnText,
+                                                ],
+                                                isRepeatingAnimation: true,
+                                                totalRepeatCount: 3,
+                                              )
+                                            : Text(
+                                                "Entrar",
+                                                style: KThemeModeApp.of(context)
+                                                    .bodyLarge
+                                                    .copyWith(
+                                                        color: KThemeModeApp.of(
+                                                                context)
+                                                            .primaryBtnText),
+                                              ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: _carregando
+                                              ? Colors.transparent
+                                              : KThemeModeApp.of(context)
+                                                  .primaryBtnText,
+                                        ),
+                                      ],
                                     ),
-                                    onTap: () async {
-                                      bool click = false;
-                                      setState(() {
-                                        _carregando = true;
-                                        click = !click;
-                                      });
-
-                                      if (formState.currentState!.validate()) {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (_) => HomePage()));
-                                      } else {
-                                        setState(() {
-                                          _carregando = false;
-                                          click = false;
-                                        });
-                                      }
-                                      setState(() {
-                                        _carregando = false;
-                                        click = false;
-                                      });
-                                    }),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -295,14 +329,40 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                               Container(
                                 height:
                                     MediaQuery.of(context).size.height * .08,
-                                child: CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor:
-                                      KThemeModeApp.of(context).accent3,
-                                  child: Icon(
-                                    FontAwesomeIcons.google,
-                                    color: KThemeModeApp.of(context)
-                                        .primaryBtnText,
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    // setState(() {
+                                    //   _carregando = true;
+                                    //   click = !click;
+                                    // });
+                                    // await Future.delayed(Duration(seconds: 2));
+                                    // await LoginFunctions(context)
+                                    //     .signGoogle()
+                                    //     .then((value) {
+                                    //   if (value) {
+                                    //     Navigator.pushReplacement(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //             builder: (context) =>
+                                    //                 HomePage()));
+                                    //   } else {
+                                    //     setState(() {
+                                    //       _carregando = false;
+                                    //       click = !click;
+                                    //     });
+                                    // //   }
+                                    // }
+                                    // );
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 50,
+                                    backgroundColor:
+                                        KThemeModeApp.of(context).accent3,
+                                    child: Icon(
+                                      FontAwesomeIcons.google,
+                                      color: KThemeModeApp.of(context)
+                                          .primaryBtnText,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -336,6 +396,8 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                               ),
                             ],
                           ),
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height * .1),
                         ],
                       ),
                     ),

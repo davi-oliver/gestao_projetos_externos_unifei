@@ -76,7 +76,8 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 0),
+      height: size.height * .1,
       child: TextFormField(
         obscureText: widget.obsecureText,
         controller: widget.campo == "Contato Telefone do Responsável"
@@ -88,7 +89,7 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
         keyboardType: !widget.numero
             ? TextInputType.text
             : const TextInputType.numberWithOptions(decimal: true),
-        style: widget.style ?? KThemeModeApp.of(context).headlineMedium,
+        style: widget.style ?? KThemeModeApp.of(context).bodySmall,
         // inputFormatters: widget.campo == "Contato Telefone do Responsável"
         //     ? [formatCel]
         //     : [],
