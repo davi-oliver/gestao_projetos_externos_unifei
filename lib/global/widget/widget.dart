@@ -2,11 +2,47 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_mode.dart';
 
 class GlobalWidget {
   BuildContext context;
   GlobalWidget(this.context);
+  Widget loadingPrincipal() {
+    final spinkit = SpinKitCubeGrid(
+      itemBuilder: (_, int index) {
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            color: index.isEven
+                ? KThemeModeApp.of(context).accent1
+                : KThemeModeApp.of(context).accent4,
+          ),
+        );
+      },
+    );
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      color: KThemeModeApp.of(context).primaryBackground,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(child: spinkit),
+              const SizedBox(
+                height: 20,
+              ),
+              Text("Aguarde...", style: KThemeModeApp.of(context).titleLarge),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget AppbarCustom(title, icon,
       [bool isBack = false, bool contracolor = false]) {
@@ -77,9 +113,9 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 0),
-      height: size.height * .1,
       child: TextFormField(
         obscureText: widget.obsecureText,
+
         controller: widget.campo == "Contato Telefone do Responsável"
             ? formatCel
             : widget.controllador,
@@ -87,7 +123,7 @@ class _TextFieldCampoState extends State<TextFieldCampo> {
         onTap: widget.onTap!,
         validator: widget.validator ?? null,
         keyboardType: !widget.numero
-            ? TextInputType.text
+            ? TextInputType.multiline
             : const TextInputType.numberWithOptions(decimal: true),
         style: widget.style ?? KThemeModeApp.of(context).bodySmall,
         // inputFormatters: widget.campo == "Contato Telefone do Responsável"

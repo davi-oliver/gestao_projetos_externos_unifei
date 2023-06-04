@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';
 part 'store.g.dart';
 
@@ -9,6 +12,37 @@ abstract class _HomeStoreBase with Store {
       ObservableList<TextEditingController>();
 
   ObservableList lista = ObservableList();
+  @observable
+  ObservableList listImagesView = ObservableList();
+  @observable
+  bool isLoading = false;
+  @observable
+  ObservableList listImagesbase64 = ObservableList();
+
+  @action
+  void setLoad(bool value) => isLoading = value;
+  @action
+  Future converteImagens() async {
+    List _aux = [];
+
+    for (int i = 0; i < listImagesView.length; i++) {
+      if (i == 0) {
+        ByteData byteData = await listImagesView[i].getByteData();
+        List<int> imageData = byteData.buffer.asUint8List();
+        _aux.add(base64Encode(imageData));
+      } else if (i == 1) {
+        ByteData byteData = await listImagesView[i].getByteData();
+        List<int> imageData = byteData.buffer.asUint8List();
+        _aux.add(base64Encode(imageData));
+      } else if (i == 2) {
+        ByteData byteData = await listImagesView[i].getByteData();
+        List<int> imageData = byteData.buffer.asUint8List();
+        _aux.add(base64Encode(imageData));
+      }
+    }
+    listImagesbase64.clear();
+    listImagesbase64.addAll(_aux.asObservable());
+  }
 
   @action
   void addController() {
@@ -35,6 +69,7 @@ final json = [
     "tipo": "text",
     "icone": Icons.email_outlined
   },
+  {"campo": "Nome", "tipo": "text", "icone": Icons.description_outlined},
   {"campo": "Descrição", "tipo": "text", "icone": Icons.description_outlined},
   {
     "campo": "Professor Responsável",
