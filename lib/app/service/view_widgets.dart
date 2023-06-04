@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gestao_projeto_unifei/app/home/store/store.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_mode.dart';
-import 'package:gestao_projeto_unifei/global/widget/widget.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ProjetoWidgets {
@@ -11,157 +11,232 @@ class ProjetoWidgets {
   ProjetoWidgets(this.context);
   Widget widgetprincipal() {
     final store = Provider.of<HomeStore>(context, listen: false);
-    return Stack(
-      children: [
-        GlobalWidget(context)
-            .AppbarCustom('Home', Icons.arrow_back_ios, false, true),
-        SingleChildScrollView(
-          child: Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width * .9,
-              margin: EdgeInsets.symmetric(vertical: 120, horizontal: 5),
-              decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.black12,
-                        offset: Offset(3, 4),
-                        blurRadius: 0.5,
-                        spreadRadius: 0.5)
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // IconButton(
+                //     onPressed: () {
+                //       Navigator.of(context).pop();
+                //     },
+                //     icon: Icon(
+                //       Icons.close,
+                //       color: KThemeModeApp.of(context).primaryText,
+                //     )),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text("Olá",
+                        style: KThemeModeApp.of(context).bodySmall.copyWith(
+                            color: KThemeModeApp.of(context).primaryText)),
+                    Text("${store.userEmail ?? "Visitante"}",
+                        style: KThemeModeApp.of(context).bodySmall.copyWith(
+                            color: KThemeModeApp.of(context).primaryText)),
                   ],
-                  borderRadius: BorderRadius.circular(15),
-                  color: KThemeModeApp.of(context).primaryBackground),
-              child: Column(
-                children: [
-                  // appbar customizada
-
-                  // barra de progresso customizada
-                  // deve aumentar o tamanho da barra de progresso de acordo com a quantidade de inputs preenchidos
-                  // monta uma lista de inputs dinamicos
-                  Observer(builder: (_) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: store.listaControladores.length,
-                      itemBuilder: (context, index) {
-                        // para cada item vai ser criado um controller
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextFieldCampo(
-                                icon: Icon(store.lista[index]['icone']),
-                                icon2: Icon(null),
-                                titulo: "${store.lista[index]['campo']}",
-                                numero: index == 0 ? true : false,
-                                style: KThemeModeApp.of(context)
-                                    .bodyMedium
-                                    .copyWith(
-                                        color: KThemeModeApp.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold),
-                                controllador: store.listaControladores[index],
-                                onTap: () {}),
-                          ],
-                        );
-                      },
-                    );
-                  }),
-                  // botão de enviar
-                  // deve ser desabilitado enquanto não estiverem todos os inputs preenchidos
-                  // deve ser habilitado quando todos os inputs estiverem preenchidos
-                  // deve ser desabilitado quando o usuário clicar no botão de enviar
-
-                  // MultiImagePickerView(
-                  //   controller: controller,
-                  //   // draggable: /* true or false, images can be reorderd by dragging by user or not, default true */,
-                  //   showAddMoreButton: controller.images.isEmpty
-                  //       ? false
-                  //       : true /* true or false, default is true */,
-                  //   showInitialContainer:
-                  //       true /* true or false, default is true */,
-                  //   initialContainerBuilder: (context, pickerCallback) {
-                  //     // return custom initial widget which should call the pickerCallback when user clicks on it
-                  //     return KitButton(
-                  //       onTap: () {
-                  //         pickerCallback.call();
-                  //       },
-                  //       decorationButton: BoxDecoration(
-                  //           color: KThemeModeApp.of(context).primary),
-                  //       widgetCenter: Text(
-                  //         "Adicionar Imagem",
-                  //         style: KThemeModeApp.of(context).bodyMedium.copyWith(
-                  //             color: KThemeModeApp.of(context).primaryBtnText),
-                  //       ),
-                  //     );
-                  //   },
-                  //   itemBuilder: (context, image, removeCallback) {
-                  //     // return custom card for image and remove button which also calls removeCallback on click
-                  //     return Container();
-                  //   },
-                  //   addMoreBuilder: (context, pickerCallback) {
-                  //     // return custom card or item widget which should call the pickerCallback when user clicks on it
-                  //     return KitButton(
-                  //       onTap: () {},
-                  //       widgetCenter: Text("Adicionar Imagem"),
-                  //     );
-                  //   },
-                  //   addButtonTitle: "Adiconar Imagem",
-                  //   addMoreButtonTitle: "Adiconar Mais Imagens",
-                  //   gridDelegate:
-                  //       const SliverGridDelegateWithFixedCrossAxisCount(
-                  //     crossAxisCount: 3,
-                  //   ),
-                  //   // onDragBoxDecoration: /* BoxDecoration when item is dragging */,
-                  //   onChange: (images) {
-                  //     // callback to update images
-                  //   },
-                  // ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * .5,
-                    height: MediaQuery.of(context).size.height * .08,
-                    margin: EdgeInsets.symmetric(
-                        vertical: MediaQuery.of(context).size.height * .1),
-                    decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.black12,
-                              offset: Offset(3, 4),
-                              blurRadius: 0.5,
-                              spreadRadius: 0.5)
-                        ],
-                        color: KThemeModeApp.of(context).primary,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TextButton(
-                      onPressed: () {
-                        // setar loading para true
-                        // chamar funcão de validação
-                        // se estiver tudo ok, chamar a função de envio para FirebaseDatabase
-                        // then concluido com sucesso, setar loading para false
-                        // aparecer alert de sucesso
-                        // else
-                        // aparecer alert de erro
-                        // setar loading para false
-                        // apontar o campo onde o erro ocorreu
-                        // ou seja, o campo que não foi preenchido
-                        // ou mostrar no alert o erro
-                      },
-                      child: Text(
-                        "Enviar",
-                        style: KThemeModeApp.of(context).bodyMedium.copyWith(
-                            color: KThemeModeApp.of(context).primaryBackground),
-                      ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * .08,
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor:
+                        KThemeModeApp.of(context).primaryBackground,
+                    child: Image.asset(
+                      "assets/images/logo.png",
+                      fit: BoxFit.cover,
                     ),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Icon(Icons.dashboard_outlined,
+                      color: KThemeModeApp.of(context).secondary),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Veja os projetos mais acessados",
+                    style: KThemeModeApp.of(context).headlineSmall,
                   )
                 ],
               ),
             ),
-          ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: store.listProjetos.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: MediaQuery.of(context).size.width * .9,
+                  height: MediaQuery.of(context).size.height * .45,
+                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image:
+                              AssetImage(store.listProjetos[index]["imagem"]),
+                          fit: BoxFit.cover),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(3, 4),
+                            blurRadius: 0.5,
+                            spreadRadius: 0.5)
+                      ],
+                      borderRadius: BorderRadius.circular(15),
+                      color: KThemeModeApp.of(context).primaryText),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 5, left: 5),
+                            decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    offset: Offset(3, 4),
+                                    blurRadius: 0.5,
+                                    spreadRadius: 0.5)
+                              ],
+                              color:
+                                  KThemeModeApp.of(context).primaryBackground,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
+                            ),
+                            height: MediaQuery.of(context).size.height * .1,
+                            width: MediaQuery.of(context).size.width * .18,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text("${store.listProjetos[index]["dia"]} ",
+                                    style: KThemeModeApp.of(context)
+                                        .headlineSmall
+                                        .copyWith(
+                                            color: KThemeModeApp.of(context)
+                                                .primary)),
+                                Text("${store.listProjetos[index]["mes"]}",
+                                    style: KThemeModeApp.of(context)
+                                        .bodyLarge
+                                        .copyWith(
+                                            color: KThemeModeApp.of(context)
+                                                .primary)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 0),
+                        height: MediaQuery.of(context).size.height * .1,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 25,
+                        ),
+                        decoration: BoxDecoration(
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.black12,
+                                  offset: Offset(3, 4),
+                                  blurRadius: 0.5,
+                                  spreadRadius: 0.5)
+                            ],
+                            borderRadius: BorderRadius.circular(15),
+                            color: KThemeModeApp.of(context).primaryBackground),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(Icons.info,
+                                            color: KThemeModeApp.of(context)
+                                                .primary),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          "${store.listProjetos[index]["nome"]} ",
+                                          overflow: TextOverflow.ellipsis,
+                                          style: KThemeModeApp.of(context)
+                                              .headlineSmall
+                                              .copyWith(
+                                                  color:
+                                                      KThemeModeApp.of(context)
+                                                          .primaryText),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Icon(Icons.person,
+                                            color: KThemeModeApp.of(context)
+                                                .primary),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          "Responsável: ${store.listProjetos[index]["responsavel"]} ",
+                                          style: KThemeModeApp.of(context)
+                                              .headlineSmall
+                                              .copyWith(
+                                                  color:
+                                                      KThemeModeApp.of(context)
+                                                          .primaryText),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(Icons.work,
+                                    color: KThemeModeApp.of(context).primary),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                    "Vagas restantes: ${store.listProjetos[index]["quantidadeVagas"]}",
+                                    style: KThemeModeApp.of(context)
+                                        .bodyLarge
+                                        .copyWith(
+                                            color: KThemeModeApp.of(context)
+                                                .primaryText)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

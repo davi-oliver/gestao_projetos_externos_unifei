@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gestao_projeto_unifei/app/home/home_functions.dart';
 import 'package:gestao_projeto_unifei/app/home/home_page.dart';
 import 'package:gestao_projeto_unifei/app/login/login_functions.dart';
+import 'package:gestao_projeto_unifei/app/service/view_projetos.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_mode.dart';
 import 'package:gestao_projeto_unifei/global/widget/widget.dart';
 
@@ -207,12 +208,11 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                                             .then((value) => {
                                                   if (value)
                                                     {
-                                                      Navigator.pushReplacement(
+                                                      Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
-                                                              builder:
-                                                                  (context) =>
-                                                                      HomePage()))
+                                                              builder: (_) =>
+                                                                  AllProjetos()))
                                                     }
                                                 });
                                       } catch (e) {
@@ -299,103 +299,103 @@ class _LoginScreenState extends State<LoginScreen> with ValidaForm {
                             ),
                           ),
                           SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                color: KThemeModeApp.of(context).secondaryText,
-                                height:
-                                    MediaQuery.of(context).size.width * .001,
-                                width: MediaQuery.of(context).size.width * .3,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                "Ou",
-                                style: KThemeModeApp.of(context).bodyLarge,
-                              ),
-                              SizedBox(width: 10),
-                              Container(
-                                color: KThemeModeApp.of(context).secondaryText,
-                                height:
-                                    MediaQuery.of(context).size.width * .001,
-                                width: MediaQuery.of(context).size.width * .3,
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Container(
+                          //       color: KThemeModeApp.of(context).secondaryText,
+                          //       height:
+                          //           MediaQuery.of(context).size.width * .001,
+                          //       width: MediaQuery.of(context).size.width * .3,
+                          //     ),
+                          //     SizedBox(width: 10),
+                          //     Text(
+                          //       "Ou",
+                          //       style: KThemeModeApp.of(context).bodyLarge,
+                          //     ),
+                          //     SizedBox(width: 10),
+                          //     Container(
+                          //       color: KThemeModeApp.of(context).secondaryText,
+                          //       height:
+                          //           MediaQuery.of(context).size.width * .001,
+                          //       width: MediaQuery.of(context).size.width * .3,
+                          //     ),
+                          //   ],
+                          // ),
                           SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * .08,
-                                child: GestureDetector(
-                                  onTap: () async {
-                                    // setState(() {
-                                    //   _carregando = true;
-                                    //   click = !click;
-                                    // });
-                                    // await Future.delayed(Duration(seconds: 2));
-                                    // await LoginFunctions(context)
-                                    //     .signGoogle()
-                                    //     .then((value) {
-                                    //   if (value) {
-                                    //     Navigator.pushReplacement(
-                                    //         context,
-                                    //         MaterialPageRoute(
-                                    //             builder: (context) =>
-                                    //                 HomePage()));
-                                    //   } else {
-                                    //     setState(() {
-                                    //       _carregando = false;
-                                    //       click = !click;
-                                    //     });
-                                    // //   }
-                                    // }
-                                    // );
-                                  },
-                                  child: CircleAvatar(
-                                    radius: 50,
-                                    backgroundColor:
-                                        KThemeModeApp.of(context).accent3,
-                                    child: Icon(
-                                      FontAwesomeIcons.google,
-                                      color: KThemeModeApp.of(context)
-                                          .primaryBtnText,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * .08,
-                                child: CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor:
-                                      KThemeModeApp.of(context).primaryText,
-                                  child: Icon(
-                                    FontAwesomeIcons.github,
-                                    color: KThemeModeApp.of(context)
-                                        .primaryBtnText,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * .08,
-                                child: CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor:
-                                      KThemeModeApp.of(context).accent1,
-                                  child: Icon(
-                                    FontAwesomeIcons.userSecret,
-                                    color: KThemeModeApp.of(context)
-                                        .primaryBtnText,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Container(
+                          //       height:
+                          //           MediaQuery.of(context).size.height * .08,
+                          //       child: GestureDetector(
+                          //         onTap: () async {
+                          //           // setState(() {
+                          //           //   _carregando = true;
+                          //           //   click = !click;
+                          //           // });
+                          //           // await Future.delayed(Duration(seconds: 2));
+                          //           // await LoginFunctions(context)
+                          //           //     .signGoogle()
+                          //           //     .then((value) {
+                          //           //   if (value) {
+                          //           //     Navigator.pushReplacement(
+                          //           //         context,
+                          //           //         MaterialPageRoute(
+                          //           //             builder: (context) =>
+                          //           //                 HomePage()));
+                          //           //   } else {
+                          //           //     setState(() {
+                          //           //       _carregando = false;
+                          //           //       click = !click;
+                          //           //     });
+                          //           // //   }
+                          //           // }
+                          //           // );
+                          //         },
+                          //         child: CircleAvatar(
+                          //           radius: 50,
+                          //           backgroundColor:
+                          //               KThemeModeApp.of(context).accent3,
+                          //           child: Icon(
+                          //             FontAwesomeIcons.google,
+                          //             color: KThemeModeApp.of(context)
+                          //                 .primaryBtnText,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     ),
+                          //     Container(
+                          //       height:
+                          //           MediaQuery.of(context).size.height * .08,
+                          //       child: CircleAvatar(
+                          //         radius: 50,
+                          //         backgroundColor:
+                          //             KThemeModeApp.of(context).primaryText,
+                          //         child: Icon(
+                          //           FontAwesomeIcons.github,
+                          //           color: KThemeModeApp.of(context)
+                          //               .primaryBtnText,
+                          //         ),
+                          //       ),
+                          //     ),
+                          //     Container(
+                          //       height:
+                          //           MediaQuery.of(context).size.height * .08,
+                          //       child: CircleAvatar(
+                          //         radius: 50,
+                          //         backgroundColor:
+                          //             KThemeModeApp.of(context).accent1,
+                          //         child: Icon(
+                          //           FontAwesomeIcons.userSecret,
+                          //           color: KThemeModeApp.of(context)
+                          //               .primaryBtnText,
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           SizedBox(
                               height: MediaQuery.of(context).size.height * .1),
                         ],

@@ -7,6 +7,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gestao_projeto_unifei/app/home/home_functions.dart';
 import 'package:gestao_projeto_unifei/app/home/store/store.dart';
+import 'package:gestao_projeto_unifei/app/service/view_projetos.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_mode.dart';
 import 'package:gestao_projeto_unifei/global/widget/widget.dart';
 // import 'package:multi_image_picker_view/multi_image_picker_view.dart';
@@ -157,7 +158,9 @@ class HomeWidgets {
               if (value) {
                 store.setLoad(false);
 
-                return alertErro("Projeto enviado com sucesso!");
+                alertErro("Projeto enviado com sucesso!");
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => AllProjetos()));
               } else {
                 store.setLoad(false);
 

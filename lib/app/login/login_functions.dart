@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gestao_projeto_unifei/app/home/store/store.dart';
+import 'package:provider/provider.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 
 TextEditingController emailcontroller = TextEditingController();
@@ -11,12 +13,15 @@ class LoginFunctions {
   LoginFunctions(this.context);
 
   Future loginWithEmail() async {
+    final homeStore = Provider.of<HomeStore>(context, listen: false);
     FirebaseAuth auth = FirebaseAuth.instance;
     try {
       final UserCredential user = await auth.signInWithEmailAndPassword(
           email: emailcontroller.text, password: senhacontroller.text);
       var token = user.user!.getIdToken();
       if (user.user != null) {
+        homeStore.setUserEmail(user.user!.email.toString().split("@")[0]);
+
         print("tokenId: $token");
         return true;
       } else {
@@ -35,6 +40,8 @@ class LoginFunctions {
       var token = user.user!.getIdToken();
 
       if (user.user != null) {
+        homeStore.setUserEmail(user.user!.email.toString().split("@")[0]);
+
         print("tokenId: $token");
         return true;
       } else {

@@ -9,18 +9,34 @@ part of 'store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeStore on _HomeStoreBase, Store {
-  late final _$listImagesAtom =
-      Atom(name: '_HomeStoreBase.listImages', context: context);
+  late final _$listProjetosAtom =
+      Atom(name: '_HomeStoreBase.listProjetos', context: context);
+
+  @override
+  ObservableList<dynamic> get listProjetos {
+    _$listProjetosAtom.reportRead();
+    return super.listProjetos;
+  }
+
+  @override
+  set listProjetos(ObservableList<dynamic> value) {
+    _$listProjetosAtom.reportWrite(value, super.listProjetos, () {
+      super.listProjetos = value;
+    });
+  }
+
+  late final _$listImagesViewAtom =
+      Atom(name: '_HomeStoreBase.listImagesView', context: context);
 
   @override
   ObservableList<dynamic> get listImagesView {
-    _$listImagesAtom.reportRead();
+    _$listImagesViewAtom.reportRead();
     return super.listImagesView;
   }
 
   @override
   set listImagesView(ObservableList<dynamic> value) {
-    _$listImagesAtom.reportWrite(value, super.listImagesView, () {
+    _$listImagesViewAtom.reportWrite(value, super.listImagesView, () {
       super.listImagesView = value;
     });
   }
@@ -41,12 +57,36 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  late final _$listImagesbase64Atom =
+      Atom(name: '_HomeStoreBase.listImagesbase64', context: context);
+
+  @override
+  ObservableList<dynamic> get listImagesbase64 {
+    _$listImagesbase64Atom.reportRead();
+    return super.listImagesbase64;
+  }
+
+  @override
+  set listImagesbase64(ObservableList<dynamic> value) {
+    _$listImagesbase64Atom.reportWrite(value, super.listImagesbase64, () {
+      super.listImagesbase64 = value;
+    });
+  }
+
   late final _$converteImagensAsyncAction =
       AsyncAction('_HomeStoreBase.converteImagens', context: context);
 
   @override
   Future<dynamic> converteImagens() {
     return _$converteImagensAsyncAction.run(() => super.converteImagens());
+  }
+
+  late final _$getInfosFirebaseAsyncAction =
+      AsyncAction('_HomeStoreBase.getInfosFirebase', context: context);
+
+  @override
+  Future getInfosFirebase() {
+    return _$getInfosFirebaseAsyncAction.run(() => super.getInfosFirebase());
   }
 
   late final _$_HomeStoreBaseActionController =
@@ -75,10 +115,23 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  dynamic getProjetos() {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.getProjetos');
+    try {
+      return super.getProjetos();
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-listImages: ${listImagesView},
-isLoading: ${isLoading}
+listProjetos: ${listProjetos},
+listImagesView: ${listImagesView},
+isLoading: ${isLoading},
+listImagesbase64: ${listImagesbase64}
     ''';
   }
 }

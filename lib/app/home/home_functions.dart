@@ -69,8 +69,8 @@ class HomeFunctions {
               "${store.lista[i]}": "${element.text}",
               "imagens": [
                 "${store.listImagesbase64[0]}",
-                "${store.listImagesbase64[1]}",
-                "${store.listImagesbase64[2]}"
+                "${store.listImagesbase64[1] ?? ""}",
+                "${store.listImagesbase64[2] ?? ""}"
               ]
             });
           } else {
@@ -79,7 +79,7 @@ class HomeFunctions {
         }
       }
 
-      // print("AUX >> $aux");
+      print("AUX >> $aux");
       final notesReference =
           FirebaseDatabase.instance.ref().child('userProfile/${user.uid}');
       await notesReference.set({'projeto': aux});

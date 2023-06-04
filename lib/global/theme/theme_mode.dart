@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestao_projeto_unifei/global/theme/theme_light.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-KThemeModeApp currentTheme = KLightTheme();
+KThemeModeApp currentTheme = KDarkTheme();
 
 abstract class KThemeModeApp {
   static DeviceSize deviceSize = DeviceSize.mobile;

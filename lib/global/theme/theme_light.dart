@@ -31,3 +31,34 @@ class KLightTheme extends KThemeModeApp {
   late Color white70 = Color(0xB3FFFFFF);
   late Color primary600 = Color(0xFFCB0A41);
 }
+
+class KDarkTheme extends KThemeModeApp {
+  @Deprecated('Use primary instead')
+  Color get primaryColor => primary;
+  @Deprecated('Use secondary instead')
+  Color get secondaryColor => secondary;
+  @Deprecated('Use tertiary instead')
+  Color get tertiaryColor => tertiary;
+
+  late Color primary = const Color.fromRGBO(78, 115, 223, 1);
+  late Color secondary = const Color.fromRGBO(22, 160, 133, 1);
+  late Color tertiary = Color.fromARGB(255, 221, 48, 48);
+  late Color alternate = const Color(0xFFF19642);
+  late Color primaryText = const Color(0xFFFFFFFF);
+  late Color secondaryText = const Color(0xFFB0BEC5);
+  late Color primaryBackground = const Color.fromARGB(255, 24, 24, 24);
+  late Color secondaryBackground = const Color(0xFF1E1E1E);
+  late Color accent1 = const Color.fromRGBO(78, 115, 223, 1);
+  late Color accent2 = const Color.fromRGBO(26, 187, 155, 1);
+  late Color accent3 = Colors.redAccent;
+  late Color accent4 = const Color(0xFF282828);
+  late Color success = const Color(0xFF04A24C);
+  late Color warning = const Color(0xFFFCDC0C);
+  late Color error = const Color(0xFFE21C3D);
+  late Color info = const Color(0xFF1C4494);
+
+  late Color primaryBtnText = Color(0xFFFFFFFF);
+  late Color lineColor = Color(0xFF333333);
+  late Color white70 = Color(0xB3FFFFFF);
+  late Color primary600 = Color(0xFFCB0A41);
+}
