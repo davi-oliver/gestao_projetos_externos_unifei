@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gestao_projeto_unifei/app/home/home_page.dart';
 import 'package:gestao_projeto_unifei/app/home/store/store.dart';
 import 'package:gestao_projeto_unifei/app/login/login_page.dart';
+import 'package:gestao_projeto_unifei/app/service/avaliacao.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
